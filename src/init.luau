@@ -30,7 +30,7 @@ local Types = require(script.Types)
 local Packages = script.Parent
 local Signal = require(Packages.Signal)
 local Janitor = require(Packages.Janitor)
-
+local Characters = workspace.Characters
 -- Cache
 local HitboxCache: { Types.Hitbox } = {}
 local CFrameZero = CFrame.identity
@@ -500,7 +500,7 @@ function Hitbox:_ProcessMagnitude()
 			end
 		else
 			-- Check all parts in workspace (direct children for performance)
-			for _, instance in workspace:GetChildren() do
+			for _, instance in Characters:GetChildren() do
 				if not instance:IsA("BasePart") then
 					continue
 				end
@@ -602,7 +602,7 @@ function Hitbox:_ProcessMagnitude()
 	end
 
 	-- Check NPCs in workspace (only direct children for performance)
-	for _, instance in workspace:GetChildren() do
+	for _, instance in Characters:GetChildren() do
 		if not instance:IsA("Model") then
 			continue
 		end
